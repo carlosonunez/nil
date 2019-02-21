@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  test_website:
+    image: nginx:alpine
+    volumes:
+      - "$PWD/site:/usr/share/nginx/html"
+  test:
+    image: graze/bats
+    volumes:
+      - "$PWD:/work"
+    working_dir: /work
+    command: /work/tests
+  gpg:
+    image: vladgh/gpg
+    volumes:
+      - "$PWD:/work"
+    working_dir: /work
+  aws:
+    image: anigeo/awscli
+    env_file: .env
+    volumes:
+      - "$PWD:/work"
