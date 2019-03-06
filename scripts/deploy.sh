@@ -15,5 +15,7 @@ docker-compose run --rm aws s3 website s3://nil.carlosnunez.me \
   --index-document index.html \
   --error-document error.html
 docker-compose run --rm aws s3 sync /work/site s3://nil.carlosnunez.me \
-  --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+  --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers \
+  --cache-control "max-age=0,no-cache,no-store,must-revalidate" \
+  --content-type text/plain
 echo nil  > .env
