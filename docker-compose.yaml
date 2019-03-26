@@ -2,6 +2,8 @@ version: "3.7"
 services:
   test_website:
     image: nginx:alpine
+    ports:
+      - 80:80
     volumes:
       - "$PWD/site:/usr/share/nginx/html"
   test:
